@@ -19,9 +19,10 @@ import users.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', users.views.index),
-    path('add_user/', users.views.add_user),
-    path('get_user/<int:user_id>/', users.views.get_user),
-    path('edit_user/<int:user_id>/', users.views.edit_user),
+    path('', users.views.UsersListView.as_view(), name='users-list'),
+    path('add_user/', users.views.AddUserView.as_view()),
+    path('get_user/<int:pk>/', users.views.GetUserView.as_view(), name='user-detail'),
+   # path('edit_user/<int:user_id>/', users.views.edit_user),
+    path('edit_user/<int:pk>/', users.views.EditUserView.as_view()),
     path('delete_user/<int:user_id>', users.views.delete_user),
 ]
